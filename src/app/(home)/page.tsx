@@ -1,30 +1,11 @@
-import { ActiveLink } from '@/components/ActiveLink';
-import { ACTIVE_LINK_SECTIONS } from '@/constants/activeLinkCategories';
-import { Code } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 import Image from 'next/image';
+import { MyPostsSection } from './my-posts-section';
 
 export default function Home() {
   return (
-    <div className='w-7xl m-auto '>
-      <div className='flex w-full mt-20 justify-between items-center'>
-        <div className='flex gap-5 items-center'>
-          <Code size={46} className='text-primary' />
-          <p className='font-heading uppercase font-bold text-secondary text-2xl'>
-            FERNANDA MASCHETI
-          </p>
-        </div>
-        <div className='flex gap-8'>
-          {ACTIVE_LINK_SECTIONS.map(section => (
-            <ActiveLink
-              name={section.name}
-              key={section.name}
-              href={section.url}
-              className='font-heading font-bold text-2xl'
-            />
-          ))}
-        </div>
-      </div>
+    <div>
       <div className='mt-[69px] flex flex-col items-center'>
         <div className='rounded-full border-2 border-primary'>
           <Image
@@ -64,6 +45,34 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <MyPostsSection />
+
+      <div className='mt-32 flex justify-between'>
+        <div>
+          <p className='text-primary font-sans font-bold'>Vamos conversar?</p>
+          <h1 className='text-secondary text-6xl font-heading font-bold'>
+            Vamos conversar?
+          </h1>
+        </div>
+        <div>
+          <a href='#' className='flex gap-2'>
+            <Mail className='text-primary' />
+            <p className='text-neutral font-sans'>fernandamascheti@gmail.com</p>
+          </a>
+          <a href='#' className='flex gap-2 my-3'>
+            <Linkedin className='text-primary' />
+            <p className='text-neutral font-sans'>/Fernanda Mascheti</p>
+          </a>
+          <a href='#' className='flex gap-2'>
+            <Github className='text-primary' />
+            <p className='text-neutral font-sans'>/fernandamascheti</p>
+          </a>
+        </div>
+      </div>
+      <p className='text-neutral text-center font-sans mt-15 mb-10'>
+        © Copyright 2025. Produzido por Fernanda Mascheti
+      </p>
     </div>
   );
 }

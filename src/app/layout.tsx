@@ -3,6 +3,9 @@ import type { Metadata } from 'next';
 import { Chakra_Petch, Inter } from 'next/font/google';
 import './globals.css';
 import Providers from '@/components/Providers';
+import { ActiveLink } from '@/components/ActiveLink';
+import { ACTIVE_LINK_SECTIONS } from '@/constants/activeLinkCategories';
+import { Code } from 'lucide-react';
 
 const chakraPetch = Chakra_Petch({
   subsets: ['latin'],
@@ -11,7 +14,7 @@ const chakraPetch = Chakra_Petch({
 });
 
 const inter = Inter({
-  variable: '--font-inter',
+  variable: '--font-sans',
   subsets: ['latin'],
 });
 
@@ -28,7 +31,27 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${chakraPetch.variable} ${inter.variable} antialiased`}>
-        <Providers>{children}</Providers>
+        <div className='w-7xl m-auto'>
+          <div className='flex w-full mt-20 justify-between items-center'>
+            <div className='flex gap-5 items-center'>
+              <Code size={46} className='text-primary' />
+              <p className='font-heading uppercase font-bold text-secondary text-2xl'>
+                FERNANDA MASCHETI
+              </p>
+            </div>
+            <div className='flex gap-8'>
+              {ACTIVE_LINK_SECTIONS.map(section => (
+                <ActiveLink
+                  name={section.name}
+                  key={section.name}
+                  href={section.url}
+                  className='font-heading font-bold text-2xl'
+                />
+              ))}
+            </div>
+          </div>
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );
