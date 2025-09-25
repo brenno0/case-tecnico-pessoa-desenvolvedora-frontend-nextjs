@@ -9,6 +9,7 @@ interface ActiveLinkProps {
   name: string;
   className?: string;
   activeClassName?: string;
+  exact?: boolean;
 }
 
 export const ActiveLink: React.FC<ActiveLinkProps> = ({
@@ -16,10 +17,16 @@ export const ActiveLink: React.FC<ActiveLinkProps> = ({
   name,
   className = '',
   activeClassName = 'text-primary font-bold',
+  exact = false,
 }) => {
   const pathname = usePathname();
 
-  const isActive = pathname === href;
+  const isActive =
+    href === '/'
+      ? pathname === '/'
+      : exact
+        ? pathname === href
+        : pathname.startsWith(href);
 
   return (
     <Link

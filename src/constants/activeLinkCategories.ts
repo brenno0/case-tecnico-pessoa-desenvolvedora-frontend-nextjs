@@ -10,6 +10,6 @@ export const ACTIVE_LINK_SECTIONS: IActiveLinkSectionProps[] = [
   },
   {
     name: 'Blog',
-    url: 'blog',
+    url: '/post',
   },
 ];

@@ -1,20 +1,21 @@
-import { NextResponse } from 'next/server';
-import { api } from '../../axios';
+import { api } from '@/app/api/axios';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: { category: string } }
 ) {
   try {
-    const { id } = params;
-
     const { searchParams } = new URL(request.url);
+
     const query: Record<string, string> = {};
     searchParams.forEach((value, key) => {
       query[key] = value;
     });
 
-    const res = await api.get(`/api/posts/${id}`, { params: query });
+    const res = await api.get(`/api/posts/category/${params.category}`, {
+      params: query,
+    });
 
     return NextResponse.json(res.data);
   } catch (err) {

@@ -33,7 +33,7 @@ export interface Pagination {
 export interface Meta {
   generatedAt: string;
   seed: string;
-  category: string;
+  category?: string;
 }
 
 export interface PostsApiResponse {
@@ -42,6 +42,17 @@ export interface PostsApiResponse {
   meta: Meta;
 }
 
+export interface GetPostByIdResponse {
+  post: Post;
+  meta: Meta;
+}
+
 export interface ListAllPostsParams {
   page: number;
+  limit?: number;
+  category?: string;
+}
+
+export interface ListPostsByCategoryParams extends ListAllPostsParams {
+  category: string;
 }
