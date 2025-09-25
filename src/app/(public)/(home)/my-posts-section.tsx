@@ -3,7 +3,7 @@
 import { IconedInput } from '@/components/IconedInput';
 import { Button } from '@/components/ui/button';
 import { SearchIcon, X } from 'lucide-react';
-import { useListAllPosts, useListPostsByCategory } from '../api/posts';
+import { useListAllPosts, useListPostsByCategory } from '../../api/posts';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PaginationLink } from '@/components/ui/pagination';
 import { useState, useMemo, useEffect } from 'react';
